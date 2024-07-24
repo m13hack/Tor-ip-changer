@@ -6,16 +6,16 @@ def install_script():
     try:
         print("[+] Installing Tor IP Changer script...")
         os.chmod('Tor.py', 0o755)
-        os.makedirs('/usr/share/aut', exist_ok=True)
-        subprocess.run(['cp', 'Tor.py', '/usr/share/aut/Tor.py'], check=True)
+        os.makedirs('/usr/share/aop', exist_ok=True)
+        subprocess.run(['cp', 'Tor.py', '/usr/share/aop/Tor.py'], check=True)
 
-        with open('/usr/bin/aut', 'w') as file:
-            file.write('#!/bin/sh\nexec python3 /usr/share/aut/Tor.py "$@"')
+        with open('/usr/bin/aop', 'w') as file:
+            file.write('#!/bin/sh\nexec python3 /usr/share/aop/Tor.py "$@"')
         
-        os.chmod('/usr/bin/aut', 0o755)
+        os.chmod('/usr/bin/aop', 0o755)
 
         print('''\n\nCongratulations! Auto Tor IP Changer is installed successfully.
-From now, just type \033[1;32maut\033[0m in terminal.''')
+From now, just type \033[1;32maop\033[0m in terminal.''')
     except Exception as e:
         print(f'[!] Installation failed: {e}')
 
@@ -23,7 +23,7 @@ def uninstall_script():
     """Uninstall the Tor IP Changer script."""
     try:
         print("[+] Uninstalling Tor IP Changer script...")
-        subprocess.run(['rm', '-rf', '/usr/share/aut', '/usr/bin/aut'], check=True)
+        subprocess.run(['rm', '-rf', '/usr/share/aop', '/usr/bin/aop'], check=True)
         print('[!] Auto Tor IP Changer has been removed successfully.')
     except Exception as e:
         print(f'[!] Uninstallation failed: {e}')
