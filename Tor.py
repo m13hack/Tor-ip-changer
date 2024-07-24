@@ -105,13 +105,14 @@ def change(previous_ip):
         os.system("service tor reload")
         new_ip = ma_ip()
         if new_ip:
+            current_time = time.ctime()
             if previous_ip:
-                print(f'\n[+] IP changed from {previous_ip} to {new_ip}')
+                print(f'\n[+] IP changed from {previous_ip} to {new_ip} at {current_time}')
             else:
-                print(f'\n[+] Your IP has been changed to: {new_ip}')
+                print(f'\n[+] Your IP has been changed to {new_ip} at {current_time}')
             with open("ip_log.txt", "a") as log_file:
-                log_file.write(f'{time.ctime()} - {new_ip}\n')
-            logging.info(f'IP changed to: {new_ip}')
+                log_file.write(f'{current_time} - {new_ip}\n')
+            logging.info(f'IP changed to: {new_ip} at {current_time}')
     except Exception as e:
         logging.error(f'Failed to change IP: {e}')
         print(f'[!] Failed to change IP: {e}')
@@ -126,7 +127,7 @@ def main():
  /_/    \_\__,_|\__\___/     _| |_| | 
         ver 1.0             |_____|_|
   
-For help, reach out to my GitHub: https://github.com/m13hack/Tor-ip-changer
+For help, reach out to README.md
 ''')
     
     check_installation()
