@@ -16,6 +16,11 @@ def ensure_permissions(file_path):
 
 def install_script():
     """Install the Tor IP Changer script."""
+    if not os.path.isfile('Tor.py'):
+        print(f'[!] Tor.py does not exist in the current directory.')
+        logging.error('Tor.py does not exist in the current directory.')
+        sys.exit(1)
+
     try:
         logging.info("Starting installation of Tor IP Changer script.")
         print("[+] Installing Tor IP Changer script...")
@@ -41,6 +46,11 @@ From now, just type \033[1;32maop\033[0m in the terminal to run it.''')
 
 def uninstall_script():
     """Uninstall the Tor IP Changer script."""
+    if not os.path.isfile('/usr/share/aop/Tor.py') or not os.path.isfile('/usr/bin/aop'):
+        print('[!] Auto Tor IP Changer is not installed.')
+        logging.error('Auto Tor IP Changer is not installed.')
+        sys.exit(1)
+
     try:
         logging.info("Starting uninstallation of Tor IP Changer script.")
         print("[+] Uninstalling Tor IP Changer script...")
