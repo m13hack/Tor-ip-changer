@@ -60,9 +60,9 @@ def main():
    / /\ \| | | | __/ _ \      | | | |__) | 
   / ____ \ |_| | || (_) |     | | |  ___/
  /_/    \_\__,_|\__\___/     _| |_| | 
-                            |_____|_|
+        ver 1.0             |_____|_|
   
-
+for help reach out my github: https://github.com/m13hack/Tor-ip-changer
 ''')
    
 
