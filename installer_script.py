@@ -39,5 +39,5 @@ def main():
     else:
         print('[!] Invalid choice. Please press Y to install or N to uninstall.')
 
-if _name_ == "_main_":
-    main()
+if __name__ == "__main__":
+    main()
