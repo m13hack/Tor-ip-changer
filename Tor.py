@@ -119,6 +119,7 @@ def change(previous_ip):
 
 def main():
     """Main function to handle user input."""
+    print("Debug: Entering main function") 
     print('''\033[1;32;40m \n
      /\        | |           _____ _____  
     /  \  _   _| |_ ___      |_   _|  __ \ 
