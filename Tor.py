@@ -105,21 +105,19 @@ def change(previous_ip):
         os.system("service tor reload")
         new_ip = ma_ip()
         if new_ip:
-            current_time = time.ctime()
             if previous_ip:
-                print(f'\n[+] IP changed from {previous_ip} to {new_ip} at {current_time}')
+                print(f'\n[+] IP changed from {previous_ip} to {new_ip}')
             else:
-                print(f'\n[+] Your IP has been changed to {new_ip} at {current_time}')
+                print(f'\n[+] Your IP has been changed to: {new_ip}')
             with open("ip_log.txt", "a") as log_file:
-                log_file.write(f'{current_time} - {new_ip}\n')
-            logging.info(f'IP changed to: {new_ip} at {current_time}')
+                log_file.write(f'{time.ctime()} - {new_ip}\n')
+            logging.info(f'IP changed to: {new_ip}')
     except Exception as e:
         logging.error(f'Failed to change IP: {e}')
         print(f'[!] Failed to change IP: {e}')
 
 def main():
     """Main function to handle user input."""
-    print("Debug: Entering main function") 
     print('''\033[1;32;40m \n
      /\        | |           _____ _____  
     /  \  _   _| |_ ___      |_   _|  __ \ 
