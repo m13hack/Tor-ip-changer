@@ -4,7 +4,7 @@ import subprocess
 import requests
 
 def check_installation():
-    """Check and install necessary dependencies."""
+    """Check and install necessary dependencies on Linux."""
     try:
         check_pip3 = subprocess.check_output('dpkg -s python3-pip', shell=True)
         if 'install ok installed' not in str(check_pip3):
@@ -42,46 +42,49 @@ def ma_ip():
     return get_ip.text
 
 def change():
-    """Change Tor IP."""
+    """Change Tor IP and log the new IP."""
     os.system("service tor reload")
-    print('[+] Your IP has been Changed to: ' + str(ma_ip()))
+    new_ip = ma_ip()
+    print(f'[+] Your IP has been changed to: {new_ip}')
+    with open("ip_log.txt", "a") as log_file:
+        log_file.write(f'{time.ctime()} - {new_ip}\n')
 
 def main():
     check_installation()
 
     print('''\033[1;32;40m \n
-                _          _______
-     /\        | |        |__   __|
-    /  \  _   _| |_ ___      | | ___  _ __
-   / /\ \| | | | __/ _ \     | |/ _ \| '__|
-  / ____ \ |_| | || (_) |    | | (_) | |
- /_/    \_\__,_|\__\___/     |_|\___/|_|
-                V 2.1
-from mrFD
+
+    
+     /\        | |           _____ _____  
+    /  \  _   _| |_ ___      |_   _|  __ \ 
+   / /\ \| | | | __/ _ \      | | | |__) | 
+  / ____ \ |_| | || (_) |     | | |  ___/
+ /_/    \_\__,_|\__\___/     _| |_| | 
+                            |_____|_|
+  
+
 ''')
-    print("\033[1;40;31m http://facebook.com/ninja.hackerz.kurdish/\n")
+   
 
     os.system("service tor start")
 
     time.sleep(3)
-    print("\033[1;32;40m change your SOCKS to 127.0.0.1:9050 \n")
-    os.system("service tor start")
+    print("\033[1;32;40m \nEnsure your SOCKS proxy is set to 127.0.0.1:9050 \n")
 
-    x = input("[+] Time to change IP in Sec [type=60] >> ")
-    lin = input("[+] How many times do you want to change your IP [type=1000] for infinite IP change type [0] >> ")
+    x = input("[+] Enter the interval for changing IP (in seconds) [default=60]: ") or "60"
+    lin = input("[+] Enter the number of IP changes [default=1000]. For infinite changes, type 0: ") or "1000"
 
-    if int(lin) == 0:
-        while True:
-            try:
+    try:
+        if int(lin) == 0:
+            while True:
                 time.sleep(int(x))
                 change()
-            except KeyboardInterrupt:
-                print('\nAuto Tor is closed')
-                quit()
-    else:
-        for i in range(int(lin)):
-            time.sleep(int(x))
-            change()
+        else:
+            for _ in range(int(lin)):
+                time.sleep(int(x))
+                change()
+    except KeyboardInterrupt:
+        print('\nAuto Tor is closed')
 
 if __name__ == "__main__":
     main()
