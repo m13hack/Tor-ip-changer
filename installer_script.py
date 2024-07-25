@@ -16,8 +16,10 @@ def install_script():
 
         print('''\n\nCongratulations! Auto Tor IP Changer is installed successfully.
 From now, just type \033[1;32maop\033[0m in terminal.''')
-    except Exception as e:
+    except subprocess.CalledProcessError as e:
         print(f'[!] Installation failed: {e}')
+    except Exception as e:
+        print(f'[!] Unexpected error: {e}')
 
 def uninstall_script():
     """Uninstall the Tor IP Changer script."""
@@ -25,8 +27,10 @@ def uninstall_script():
         print("[+] Uninstalling Tor IP Changer script...")
         subprocess.run(['rm', '-rf', '/usr/share/aop', '/usr/bin/aop'], check=True)
         print('[!] Auto Tor IP Changer has been removed successfully.')
-    except Exception as e:
+    except subprocess.CalledProcessError as e:
         print(f'[!] Uninstallation failed: {e}')
+    except Exception as e:
+        print(f'[!] Unexpected error: {e}')
 
 def main():
     choice = input('[+] Ready to roll? Type \033[1;32mY\033[0m to install or \033[1;31mN\033[0m to uninstall >> ').strip().lower()
