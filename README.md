@@ -15,21 +15,32 @@
 ## Installation
 
 To install the Auto IP Changer script, follow these steps:
+1. **Navigate to priveldge user:**
+   ```bash
+   sudo su
+   ```
 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/FDX100/Auto_Tor_IP_changer.git
-   cd Auto_Tor_IP_changer
+   git clone https://github.com/m13hack/Tor-ip-changer.git
+   cd Tor_ip_changer
    ```
 
 2. **Run the Installer Script:**
 
    ```bash
-   sudo python3 installer_script.py
+   chmod +x Tor.py
+   chmod +x installer_script.py
+   python3 installer_script.py
    ```
 
    This will copy the `Tor.py` script to the appropriate location and create a command-line utility named `aop`.
+   # Steps to change the Network settings:
+1. open your browser in linux or tor.
+2. navigate to right hand corner,click the three dots to open settings.
+3. scroll down to the bottom you can see the network settings option.open it
+4. change to manual proxy settings,change the sock settings to IP as 127.0.0.1 and port as 9050
 
 ## Usage
 
