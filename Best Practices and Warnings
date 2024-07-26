@@ -1,0 +1,23 @@
+## Best Practices
+
+Install Tor Properly: Make sure you have Tor installed and running before using the script.
+
+Verify Tor Configuration: Ensure Tor's SOCKS proxy is configured correctly to 127.0.0.1:9050.
+
+Set Reasonable Intervals: Set reasonable intervals for IP changes to avoid network disruptions.
+
+Monitor Logs: Regularly check the log files (aop_installer.log and ip_log.txt) for any errors or issues.
+
+Run with Sudo: Use sudo to run the installer and uninstaller scripts to ensure proper permissions.
+
+## Warnings
+
+Avoid Malicious Activities: Do not use this script for any illegal or malicious activities. It is intended for ethical use only.
+
+Ensure Dependencies: Ensure all required dependencies, such as Python 3 and requests library, are installed.
+
+Stop the Script When Not Needed: If you no longer need the script to run, make sure to stop it by pressing Ctrl+C.
+
+Verify Tor is Running: Always check that the Tor service is running and properly configured before starting the script.
+
+Avoid Reckless Modifications: Avoid making changes to the script unless you understand the code and its implications.
